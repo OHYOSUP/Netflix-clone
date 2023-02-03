@@ -181,6 +181,10 @@ export const Similar = styled(motion.div)<{ bgphoto: string }>`
   background-image: url(${(props) => props.bgphoto});
   background-size: cover;
   border-radius: 15px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
 `;
 export const SimilarInfo = styled(motion.div)`
   padding: 10px;
@@ -225,3 +229,9 @@ export const SimilarBox = styled.div`
   padding-top: 10vh;
   background-color: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
 `;
+export const SimilarBoxNoImage = styled.div`
+display: flex;
+justify-content: center;
+align-items :center;
+font-size: 16px;
+`

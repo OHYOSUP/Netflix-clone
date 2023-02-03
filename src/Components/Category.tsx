@@ -18,6 +18,7 @@ import { IconContext } from "react-icons";
 import { getWindowDimensions, useWindowDimensions } from "./Utils";
 import {
   Slider,
+  SimilarBoxNoImage,
   Row,
   Box,
   Info,
@@ -139,16 +140,14 @@ function Category({ type }: { type: Types }) {
   const similarBoxOnClicked = ({
     contentId,
     category,
-    keyword
+    keyword,
   }: {
     contentId: number;
     category: string;
     keyword: string;
   }) => {
     navigate(`/search?keyword=${keyword}`);
-
   };
-
 
   return (
     <>
@@ -254,25 +253,56 @@ function Category({ type }: { type: Types }) {
                     </p>
                     <SimilarBox>
                       {getSimilar?.results.slice(0, 18).map((item) => (
-                        <Similar
-                          variants={SimilarBoxVariants}
-                          initial="normal"
-                          whileHover="hover"
-                          transition={{ type: "tween" }}
-                          bgphoto={makeImagePath(item.backdrop_path, "w500")}
-                          key={"similar" + String(item.id)}
-                          onClick={() => {
-                            similarBoxOnClicked({
-                              contentId: item.id,
-                              category: type,
-                              keyword: item.original_title
-                            });
-                          }}
-                        >
-                          <SimilarInfo variants={similarInfoVariants}>
-                            {item.title}
-                          </SimilarInfo>
-                        </Similar>
+                        <>
+                          {item.backdrop_path ? (
+                            <Similar
+                              variants={SimilarBoxVariants}
+                              initial="normal"
+                              whileHover="hover"
+                              transition={{ type: "tween" }}
+                              bgphoto={makeImagePath(
+                                item.backdrop_path,
+                                "w500"
+                              )}
+                              key={"similar" + String(item.id)}
+                              onClick={() => {
+                                similarBoxOnClicked({
+                                  contentId: item.id,
+                                  category: type,
+                                  keyword: item.original_title,
+                                });
+                              }}
+                            >
+                              <SimilarInfo variants={similarInfoVariants}>
+                                {item.title}
+                              </SimilarInfo>
+                            </Similar>
+                          ) : (
+                            <Similar
+                            variants={SimilarBoxVariants}
+                            initial="normal"
+                            whileHover="hover"
+                            transition={{ type: "tween" }}
+                            bgphoto={makeImagePath(
+                              item.backdrop_path,
+                              "w500"
+                            )}
+                            key={"similar" + String(item.id)}
+                            onClick={() => {
+                              similarBoxOnClicked({
+                                contentId: item.id,
+                                category: type,
+                                keyword: item.original_title,
+                              });
+                            }}
+                          >
+                            Image is preparing
+                            <SimilarInfo variants={similarInfoVariants}>
+                              {item.title}
+                            </SimilarInfo>
+                          </Similar>
+                          )}
+                        </>
                       ))}
                     </SimilarBox>
                   </BigOverview>

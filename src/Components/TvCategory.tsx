@@ -286,7 +286,8 @@ function TvCategory({ type }: { type: TvTypes }) {
                     {clickedProgram.backdrop_path ? (
                       <SimilarBox>
                         {similarTvData?.results.slice(0, 18).map((item) => (
-                          <Similar
+                          <>
+                          {item.backdrop_path ? <Similar
                             onClick={() => {
                               similarBoxOnClicked({
                                 contentId: item.id,
@@ -307,7 +308,30 @@ function TvCategory({ type }: { type: TvTypes }) {
                             <SimilarInfo variants={similarInfoVariants}>
                               {item.original_name}
                             </SimilarInfo>
-                          </Similar>
+                          </Similar> : <Similar
+                            onClick={() => {
+                              similarBoxOnClicked({
+                                contentId: item.id,
+                                category: type,
+                                keyword: item.original_name,
+                              });
+                            }}
+                            variants={SimilarBoxVariants}
+                            initial="normal"
+                            whileHover="hover"
+                            transition={{ type: "tween" }}
+                            bgphoto={makeImagePath(
+                              item.backdrop_path + "",
+                              "w500"
+                            )}
+                            key={"similar" + String(item.id)}
+                          >Image is preparing
+                            <SimilarInfo variants={similarInfoVariants}>
+                              {item.original_name}
+                            </SimilarInfo>
+                          </Similar>}
+                          </>
+                          
                         ))}
                       </SimilarBox>
                     ) : (

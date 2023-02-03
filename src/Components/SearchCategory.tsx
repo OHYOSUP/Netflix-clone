@@ -72,6 +72,8 @@ function SearchCategory({ keyword }: { keyword: string | null }) {
     { enabled: false }
   );
 
+  
+
   const onBoxClick = ({ contentId }: { contentId: number }) => {
     navigate(`/search/${contentId}?category=movies&keyword=${keyword}`);
   };
