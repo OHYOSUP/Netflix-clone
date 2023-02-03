@@ -173,6 +173,29 @@ export const BigCover = styled.div<{ bgPhoto: string }>`
     text-shadow: 1px 1px 1px black;
   }
 `;
+
+export const Similar = styled(motion.div)<{ bgphoto: string }>`
+  width: 250px;
+  height: 160px;
+  cursor: pointer;
+  background-image: url(${(props) => props.bgphoto});
+  background-size: cover;
+  border-radius: 15px;
+`;
+export const SimilarInfo = styled(motion.div)`
+  padding: 10px;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`;
+export const BoxWrapper = styled.div`
+  background: black;
+`;
 export const BigOverview = styled.div`
   display: flex;
   bottom: 0;
@@ -197,31 +220,8 @@ export const BigOverview = styled.div`
 export const SimilarBox = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  width: 100%;
+  width:100%;
   gap: 10px 10px;
   padding-top: 10vh;
   background-color: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
-`;
-
-export const Similar = styled(motion.div)<{ bgphoto: string }>`
-  width: 250px;
-  height: 160px;
-  cursor: pointer;
-  background-image: url(${(props) => props.bgphoto});
-  background-size: cover;
-  border-radius: 15px;
-`;
-export const SimilarInfo = styled(motion.div)`
-  padding: 10px;
-  opacity: 0;
-  background-color: rgba(0, 0, 0, 0);
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-`;
-export const BoxWrapper = styled.div`
-  background: black;
 `;
